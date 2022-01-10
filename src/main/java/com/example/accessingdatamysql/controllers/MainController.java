@@ -17,25 +17,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller // This means that this class is a controller
-@RequestMapping(path = "/users") // This means URL's start with /demo after app path
+@RequestMapping(path = "/users") // This means URL's start with /users after app path
 public class MainController {
     @Autowired // Allows us to use a service without instantiating it
-    private UserService userService;
+    private UserService userService; // We sill make our CRUD operations via our userService. In this case is something very simple but it could have any kind of complicated logic inside 
 
     @PostMapping
     public @ResponseBody User addNewUser(@RequestBody User user) {
-        // @ResponseBody means the returned String is the response and not a view name
+        // @ResponseBody means the returned User is the response and not a view name
         return userService.addUser(user);
     }
 
     @GetMapping
     public @ResponseBody ArrayList<User> getAllUsers() {
-        // This will return a JSON or XML with the users
+        // This will return an array of JSON or XML with all users
         return userService.getUsers();
     }
 
     @GetMapping(path = "/{id}")
     public @ResponseBody Optional<User> getUserById(@PathVariable Integer id) {
+        // This will return either the user found or null if search doesn't resolve well
         return userService.getById(id);
     }
 
