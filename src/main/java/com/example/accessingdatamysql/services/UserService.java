@@ -1,6 +1,7 @@
 package com.example.accessingdatamysql.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.example.accessingdatamysql.models.User;
 import com.example.accessingdatamysql.repositories.UserRepository;
@@ -22,4 +23,16 @@ public class UserService {
         return (ArrayList<User>) userRepository.findAll();
     }
 
+    public Optional<User> getById(Integer id){
+        return userRepository.findById(id);
+    }
+
+    public boolean deleteUser(Integer id){        
+        try {
+            userRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
