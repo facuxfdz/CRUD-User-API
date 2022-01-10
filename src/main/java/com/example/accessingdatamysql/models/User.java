@@ -7,8 +7,8 @@ import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id // The following attribute will be primary key in our DB
+    @GeneratedValue(strategy = GenerationType.AUTO) // Configure auto generated values in the primary key
     private Integer id;
     private String name;
     private String email;
