@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class Student {
     @Id // The following attribute will be primary key in our DB
     @GeneratedValue(strategy = GenerationType.AUTO) // Configure auto generated values in the primary key
     private Integer id;
